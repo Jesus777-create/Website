@@ -1,0 +1,31 @@
+---
+import { team } from '../data/team';
+---
+
+<section id="team" style="padding-top:80px;padding-bottom:80px;">
+  <div class="s-eye">The team</div>
+  <h2 class="s-h">Builders who <em>understand</em><br />the problem.</h2>
+  <p class="s-p">
+    Led by a founder with lived experience — alongside engineers, builders, and business
+    partners united by one mission: build the accessible world that should have existed
+    all along.
+  </p>
+  <div class="team-grid">
+    {
+      team.map((m) => (
+        <div class="tc">
+          <div class="av" style={`background:${m.bg};color:${m.fg};`} aria-hidden="true">
+            {m.initials}
+          </div>
+          <div class="tc-name">{m.name}</div>
+          <div class="tc-role">{m.role}</div>
+          {m.badge && (
+            <div class="tc-badge" style={`background:${m.badge.bg};color:${m.badge.fg};`}>
+              {m.badge.label}
+            </div>
+          )}
+        </div>
+      ))
+    }
+  </div>
+</section>

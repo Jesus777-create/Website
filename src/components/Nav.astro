@@ -1,0 +1,59 @@
+---
+const links = [
+  { href: '#mission', label: 'Mission' },
+  { href: '#why', label: 'Why' },
+  { href: '#product', label: 'Product' },
+  { href: '#team', label: 'Team' },
+];
+---
+
+<nav>
+  <a class="nav-logo" href="#" aria-label="AccessWave Technologies — home">
+    <img src="/logo.png" height="44" alt="AccessWave Technologies" />
+  </a>
+
+  <button
+    class="nav-toggle"
+    type="button"
+    aria-expanded="false"
+    aria-controls="nav-links"
+    aria-label="Open menu"
+  >
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="nav-links" id="nav-links">
+    {links.map((l) => <a href={l.href}>{l.label}</a>)}
+    <a href="#waitlist" class="cta">Join beta</a>
+  </div>
+</nav>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
+  const menu = document.getElementById('nav-links');
+
+  if (toggle && menu) {
+    const setOpen = (open: boolean) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      menu.dataset.open = String(open);
+    };
+
+    toggle.addEventListener('click', () => {
+      setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    // Close the menu after following an in-page link.
+    menu.querySelectorAll('a').forEach((a) =>
+      a.addEventListener('click', () => setOpen(false))
+    );
+
+    // Close on Escape for keyboard users.
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+  }
+</script>

@@ -1,0 +1,45 @@
+---
+const cards = [
+  {
+    icon: '🤝',
+    title: 'We understand the user',
+    body: 'Our founder is hard of hearing and visually impaired. Her mother is deafblind. AccessWave was born from real lived experience — not market research. That is a moat no one can replicate.',
+  },
+  {
+    icon: '⚡',
+    title: 'The technology exists',
+    body: 'Haptics, wearables, spatial audio — the building blocks have been here for years. They just weren\'t assembled with these communities in the room.',
+  },
+  {
+    icon: '🌊',
+    title: 'Massively underserved',
+    body: 'Fewer than 5% of digital products meet baseline accessibility standards. The market is enormous and the gap is structural — not accidental.',
+  },
+  {
+    icon: '📈',
+    title: 'Regulatory tailwinds',
+    body: 'ADA compliance mandates are tightening across enterprise, education, and media. Accessibility is no longer optional — it\'s infrastructure.',
+  },
+];
+---
+
+<div class="why-bg" id="why">
+  <div class="why-inner">
+    <div class="s-eye">Why AccessWave exists</div>
+    <h2 class="s-h" style="max-width:640px;">
+      Why do disabled communities have to adapt to the world —<br />
+      <em>when the world won't adapt to them?</em>
+    </h2>
+    <div class="why-grid">
+      {
+        cards.map((c) => (
+          <div class="why-card">
+            <div class="why-icon" aria-hidden="true">{c.icon}</div>
+            <h3>{c.title}</h3>
+            <p>{c.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Origin from '../components/Origin.astro';
+import Why from '../components/Why.astro';
+import Product from '../components/Product.astro';
+import Vision from '../components/Vision.astro';
+import Team from '../components/Team.astro';
+import Contact from '../components/Contact.astro';
+import Waitlist from '../components/Waitlist.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout>
+  <Nav />
+  <main id="main">
+    <Hero />
+    <div class="divider"></div>
+    <Origin />
+    <div class="divider"></div>
+    <Why />
+    <Product />
+    <div class="divider"></div>
+    <Vision />
+    <div class="divider"></div>
+    <Team />
+    <div class="divider"></div>
+    <Contact />
+    <Waitlist />
+  </main>
+  <Footer />
+</BaseLayout>
+
+<script>
+  import '../scripts/canvas.ts';
+</script>

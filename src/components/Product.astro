@@ -1,0 +1,55 @@
+---
+const useCases = [
+  {
+    icon: '🎵',
+    color: '#5EC8B4',
+    title: 'Feel music',
+    body: 'Rhythm, melody, and emotion translated to touch. A deaf teenager experiencing a concert for the first time.',
+  },
+  {
+    icon: '🎬',
+    color: '#85B7EB',
+    title: 'Feel streaming',
+    body: 'Ocean waves, thunder, the tension before a scene breaks. The full sensory world of film and TV.',
+  },
+  {
+    icon: '📞',
+    color: '#ED93B1',
+    title: 'Hear your name',
+    body: 'A distinct haptic pattern when someone calls you — so a deafblind person always knows they\'re being spoken to.',
+  },
+  {
+    icon: '🔔',
+    color: '#AFA9EC',
+    title: 'Stay safe',
+    body: 'Alarms, sirens, door knocks, and alerts — all felt. Safety and independence, without compromise.',
+  },
+];
+---
+
+<section id="product">
+  <div class="s-eye">Flagship product</div>
+  <div class="prod-card">
+    <div class="prod-badge">Hardware + Software · Pre-seed</div>
+    <h2>The AccessWave wristband —<br /><em>sound you can feel</em></h2>
+    <p>
+      A wearable that converts audio into nuanced haptic sensation. Not just vibration —
+      <em>emotion</em>. The swell of a symphony. The drop in a beat. The tension before
+      a scene breaks. The moment someone calls your name. For the first time, these
+      experiences belong to everyone.
+    </p>
+    <div class="uc-grid">
+      {
+        useCases.map((u) => (
+          <div class="uc">
+            <div class="uc-icon" style={`color:${u.color};`} aria-hidden="true">
+              {u.icon}
+            </div>
+            <h4>{u.title}</h4>
+            <p>{u.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
