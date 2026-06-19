@@ -1,7 +1,6 @@
 # AccessWave Technologies — Website
 
-Marketing site for AccessWave, built with [Astro](https://astro.build). Static output,
-host-agnostic.
+Marketing site for AccessWave, built with [Astro](https://astro.build).
 
 ## Develop
 
@@ -35,7 +34,7 @@ The waitlist posts to [Formspree](https://formspree.io) (works on any host).
 Until set, the form shows the confirmation message but doesn't deliver email (a warning
 is logged to the console).
 
-## TODO (placeholders from the mockup to confirm with the founder)
+## TODO
 
 - Real Formspree form ID (`PUBLIC_FORMSPREE_ID`).
 - Contact email (`hello@accesswave.tech`) in `src/components/Waitlist.astro`.
