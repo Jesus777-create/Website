@@ -12,6 +12,48 @@ import Waitlist from '../components/Waitlist.astro';
 import Footer from '../components/Footer.astro';
 ---
 
+<div id="aa-panel">
+  <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#5EC8B4;margin-bottom:16px;">Text Size</div>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <button onclick="changeSize(-1)" style="background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.1);color:white;width:32px;height:32px;border-radius:8px;font-size:16px;cursor:pointer;">−</button>
+    <span id="aa-label" style="color:rgba(255,255,255,0.6);font-size:13px;flex:1;text-align:center;">Medium</span>
+    <button onclick="changeSize(1)" style="background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.1);color:white;width:32px;height:32px;border-radius:8px;font-size:16px;cursor:pointer;">+</button>
+  </div>
+  <div style="margin-top:20px;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#5EC8B4;margin-bottom:12px;">Preview</div>
+  <div id="aa-preview" style="font-size:15px;color:rgba(255,255,255,0.6);">The quick brown fox</div>
+</div>
+
+<script>
+  const sizes = [
+    { label: 'Small',   scale: 0.85 },
+    { label: 'Medium',  scale: 1.00 },
+    { label: 'Large',   scale: 1.15 },
+    { label: 'X-Large', scale: 1.30 },
+  ];
+  let current = 1;
+
+  function togglePanel() {
+    const p = document.getElementById('aa-panel');
+    p.style.display = p.style.display === 'none' ? 'block' : 'none';
+  }
+
+  function changeSize(dir) {
+    current = Math.max(0, Math.min(sizes.length - 1, current + dir));
+    const s = sizes[current];
+    document.documentElement.style.fontSize = (16 * s.scale) + 'px';
+    document.getElementById('aa-label').textContent = s.label;
+    document.getElementById('aa-preview').style.fontSize = (15 * s.scale) + 'px';
+  }
+
+  document.addEventListener('click', function(e) {
+    const panel = document.getElementById('aa-panel');
+    const btn = document.querySelector('.aa-btn');
+    if (!panel.contains(e.target) && e.target !== btn) {
+      panel.style.display = 'none';
+    }
+  });
+</script>
+
 <BaseLayout>
   <Nav />
   <main id="main">

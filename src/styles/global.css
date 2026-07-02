@@ -1,4 +1,4 @@
-  /* ===== RESET ===== */
+/* ===== RESET ===== */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -6,14 +6,12 @@
 }
 
 /* ===== ACCESSIBILITY ADDITIONS ===== */
-/* Visible, high-contrast focus ring for keyboard users. */
 :focus-visible {
   outline: 2px solid var(--teal);
   outline-offset: 3px;
   border-radius: 2px;
 }
 
-/* Skip-to-content link: off-screen until focused. */
 .skip-link {
   position: absolute;
   left: 12px;
@@ -23,7 +21,7 @@
   background: var(--teal);
   color: var(--navy);
   border-radius: 999px;
-  font-size: 13px;
+  font-size: 0.81rem;
   font-weight: 500;
   text-decoration: none;
   transition: top 0.2s;
@@ -32,7 +30,6 @@
   top: 12px;
 }
 
-/* Screen-reader-only helper (visually hidden, still announced). */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -45,8 +42,6 @@
   border: 0;
 }
 
-/* Respect users who prefer reduced motion. The canvas scripts also check this
-   and render a single static frame instead of animating. */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -108,6 +103,34 @@ nav {
   width: auto;
 }
 
+.aa-btn {
+  background: none;
+  border: none;
+  color: var(--w40);
+  font-size: 0.81rem;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: color 0.2s;
+  font-family: 'DM Sans', sans-serif;
+}
+.aa-btn:hover {
+  color: var(--w);
+}
+
+#aa-panel {
+  position: fixed;
+  top: 80px;
+  left: 20px;
+  background: #0d1e30;
+  border: 0.5px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 24px;
+  width: 220px;
+  z-index: 200;
+  display: none;
+  backdrop-filter: blur(14px);
+}
+
 .nav-links {
   display: flex;
   gap: 28px;
@@ -116,7 +139,7 @@ nav {
 
 .nav-links a {
   text-decoration: none;
-  font-size: 13px;
+  font-size: 0.81rem;
   color: var(--w40);
   letter-spacing: 0.04em;
   transition: color 0.2s;
@@ -161,7 +184,7 @@ nav {
 }
 
 .eyebrow {
-  font-size: 11px;
+  font-size: 0.69rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--teal);
@@ -171,7 +194,7 @@ nav {
 
 .hero h1 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(36px, 6vw, 64px);
+  font-size: clamp(2.25rem, 6vw, 4rem);
   font-weight: 600;
   line-height: 1.1;
   color: var(--w);
@@ -185,7 +208,7 @@ nav {
 }
 
 .hero-sub {
-  font-size: 17px;
+  font-size: 1.06rem;
   font-weight: 300;
   color: var(--w60);
   line-height: 1.75;
@@ -208,7 +231,7 @@ nav {
   padding: 14px 28px;
   border-radius: 999px;
   font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 500;
   cursor: pointer;
   text-decoration: none;
@@ -227,7 +250,7 @@ nav {
   padding: 14px 28px;
   border-radius: 999px;
   font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
+  font-size: 0.875rem;
   text-decoration: none;
   display: inline-block;
   transition: border-color 0.2s, color 0.2s;
@@ -249,13 +272,13 @@ nav {
 
 .stat-n {
   font-family: 'Playfair Display', serif;
-  font-size: 28px;
+  font-size: 1.75rem;
   color: var(--teal);
   font-weight: 600;
 }
 
 .stat-l {
-  font-size: 12px;
+  font-size: 0.75rem;
   color: var(--w40);
   margin-top: 4px;
 }
@@ -268,7 +291,7 @@ section {
 }
 
 .s-eye {
-  font-size: 11px;
+  font-size: 0.69rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--teal);
@@ -278,7 +301,7 @@ section {
 
 .s-h {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(28px, 4vw, 44px);
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
   font-weight: 600;
   line-height: 1.2;
   color: var(--w);
@@ -292,7 +315,7 @@ section {
 }
 
 .s-p {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 300;
   color: var(--w60);
   line-height: 1.8;
@@ -322,14 +345,14 @@ section {
 
 .q-text {
   font-family: 'Playfair Display', serif;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-style: italic;
   color: var(--w60);
   line-height: 1.6;
 }
 
 .q-attr {
-  font-size: 12px;
+  font-size: 0.75rem;
   color: var(--w40);
   margin-top: 8px;
   letter-spacing: 0.04em;
@@ -363,19 +386,19 @@ section {
 }
 
 .why-icon {
-  font-size: 28px;
+  font-size: 1.75rem;
   margin-bottom: 16px;
 }
 
 .why-card h3 {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
   color: var(--w);
   margin-bottom: 10px;
 }
 
 .why-card p {
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 300;
   color: var(--w40);
   line-height: 1.7;
@@ -406,7 +429,7 @@ section {
   display: inline-block;
   background: rgba(94, 200, 180, 0.15);
   color: var(--teal);
-  font-size: 11px;
+  font-size: 0.69rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   padding: 5px 14px;
@@ -416,7 +439,7 @@ section {
 
 .prod-card h2 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(24px, 4vw, 38px);
+  font-size: clamp(1.5rem, 4vw, 2.375rem);
   font-weight: 600;
   color: var(--w);
   line-height: 1.2;
@@ -431,7 +454,7 @@ section {
 }
 
 .prod-card > p {
-  font-size: 15px;
+  font-size: 0.94rem;
   font-weight: 300;
   color: var(--w60);
   line-height: 1.8;
@@ -457,19 +480,19 @@ section {
 }
 
 .uc-icon {
-  font-size: 22px;
+  font-size: 1.375rem;
   margin-bottom: 10px;
 }
 
 .uc h4 {
-  font-size: 13px;
+  font-size: 0.81rem;
   font-weight: 500;
   color: var(--w);
   margin-bottom: 4px;
 }
 
 .uc p {
-  font-size: 12px;
+  font-size: 0.75rem;
   color: var(--w40);
   line-height: 1.55;
 }
@@ -483,7 +506,7 @@ section {
 
 .mission-q {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(20px, 3vw, 32px);
+  font-size: clamp(1.25rem, 3vw, 2rem);
   font-style: italic;
   color: var(--w);
   line-height: 1.5;
@@ -491,7 +514,7 @@ section {
 }
 
 .mission-p {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 300;
   color: var(--w60);
   line-height: 1.8;
@@ -526,27 +549,27 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
+  font-size: 0.81rem;
   font-weight: 500;
   margin: 0 auto 14px;
 }
 
 .tc-name {
-  font-size: 13px;
+  font-size: 0.81rem;
   font-weight: 500;
   color: var(--w);
   margin-bottom: 4px;
 }
 
 .tc-role {
-  font-size: 11px;
+  font-size: 0.69rem;
   color: var(--w40);
   line-height: 1.4;
 }
 
 .tc-badge {
   display: inline-block;
-  font-size: 10px;
+  font-size: 0.625rem;
   letter-spacing: 0.07em;
   text-transform: uppercase;
   padding: 2px 8px;
@@ -564,14 +587,14 @@ section {
 
 .footer-cta h2 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(26px, 4vw, 42px);
+  font-size: clamp(1.625rem, 4vw, 2.625rem);
   font-weight: 600;
   color: var(--w);
   margin-bottom: 16px;
 }
 
 .footer-cta > p {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 300;
   color: var(--w60);
   max-width: 460px;
@@ -597,7 +620,7 @@ section {
   border-radius: 999px;
   color: var(--w);
   font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
+  font-size: 0.875rem;
   outline: none;
 }
 
@@ -606,7 +629,7 @@ section {
 }
 
 #wl-ok {
-  font-size: 14px;
+  font-size: 0.875rem;
   color: var(--teal);
   margin-top: 10px;
   display: none;
@@ -629,7 +652,7 @@ footer img {
 }
 
 footer p {
-  font-size: 12px;
+  font-size: 0.75rem;
   color: var(--w40);
 }
 
@@ -640,8 +663,7 @@ footer p {
   margin: 0;
 }
 
-/* ===== MOBILE NAV TOGGLE (hamburger) ===== */
-/* Hidden on desktop; the full .nav-links menu is shown instead. */
+/* ===== MOBILE NAV TOGGLE ===== */
 .nav-toggle {
   display: none;
   flex-direction: column;
@@ -683,7 +705,6 @@ footer p {
     display: flex;
   }
 
-  /* Menu collapses into a dropdown panel toggled by the hamburger. */
   .nav-links {
     position: absolute;
     top: 100%;
@@ -696,7 +717,6 @@ footer p {
     background: rgba(7, 17, 31, 0.97);
     backdrop-filter: blur(14px);
     border-bottom: 0.5px solid var(--w10);
-    /* Hidden by default; revealed when the toggle sets [data-open]. */
     display: none;
   }
   .nav-links[data-open="true"] {
@@ -704,7 +724,7 @@ footer p {
   }
   .nav-links a {
     padding: 14px 4px;
-    font-size: 15px;
+    font-size: 0.94rem;
     border-bottom: 0.5px solid var(--w06);
   }
   .nav-links a.cta {
