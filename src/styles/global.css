@@ -131,10 +131,49 @@ nav {
   backdrop-filter: blur(14px);
 }
 
+.aa-title {
+  font-size: 0.69rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 16px;
+}
+
+.aa-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.aa-step {
+  background: var(--w06);
+  border: 0.5px solid var(--w10);
+  color: var(--w);
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.aa-label {
+  color: var(--w60);
+  font-size: 0.81rem;
+  flex: 1;
+  text-align: center;
+}
+
+#aa-preview {
+  font-size: 0.94rem;
+  color: var(--w60);
+}
+
 .nav-links {
   display: flex;
   gap: 28px;
   align-items: center;
+  margin-right: 40%;
 }
 
 .nav-links a {

@@ -13,14 +13,14 @@ import Footer from '../components/Footer.astro';
 ---
 
 <div id="aa-panel">
-  <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#5EC8B4;margin-bottom:16px;">Text Size</div>
-  <div style="display:flex;align-items:center;gap:12px;">
-    <button onclick="changeSize(-1)" style="background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.1);color:white;width:32px;height:32px;border-radius:8px;font-size:16px;cursor:pointer;">−</button>
-    <span id="aa-label" style="color:rgba(255,255,255,0.6);font-size:13px;flex:1;text-align:center;">Medium</span>
-    <button onclick="changeSize(1)" style="background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.1);color:white;width:32px;height:32px;border-radius:8px;font-size:16px;cursor:pointer;">+</button>
+  <div class="aa-title">Text Size</div>
+  <div class="aa-controls">
+    <button id="aa-dec" class="aa-step" aria-label="Decrease text size">-</button>
+    <span id="aa-label" class="aa-label">Medium</span>
+    <button id="aa-inc" class="aa-step" aria-label="Increase text size">+</button>
   </div>
-  <div style="margin-top:20px;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#5EC8B4;margin-bottom:12px;">Preview</div>
-  <div id="aa-preview" style="font-size:15px;color:rgba(255,255,255,0.6);">The quick brown fox</div>
+  <div class="aa-title" style="margin-top:20px;">Preview</div>
+  <div id="aa-preview">The quick brown fox</div>
 </div>
 
 <script>
@@ -32,26 +32,55 @@ import Footer from '../components/Footer.astro';
   ];
   let current = 1;
 
-  function togglePanel() {
-    const p = document.getElementById('aa-panel');
-    p.style.display = p.style.display === 'none' ? 'block' : 'none';
-  }
+  const panel = document.getElementById('aa-panel');
+  const btn = document.querySelector<HTMLButtonElement>('.aa-btn');
+  const dec = document.getElementById('aa-dec');
+  const inc = document.getElementById('aa-inc');
+  const label = document.getElementById('aa-label');
+  const preview = document.getElementById('aa-preview');
 
-  function changeSize(dir) {
-    current = Math.max(0, Math.min(sizes.length - 1, current + dir));
+  function applySize() {
     const s = sizes[current];
     document.documentElement.style.fontSize = (16 * s.scale) + 'px';
-    document.getElementById('aa-label').textContent = s.label;
-    document.getElementById('aa-preview').style.fontSize = (15 * s.scale) + 'px';
+    if (label) label.textContent = s.label;
+    if (preview) preview.style.fontSize = (15 * s.scale) + 'px';
   }
 
-  document.addEventListener('click', function(e) {
-    const panel = document.getElementById('aa-panel');
-    const btn = document.querySelector('.aa-btn');
-    if (!panel.contains(e.target) && e.target !== btn) {
-      panel.style.display = 'none';
-    }
-  });
+  function setPanelOpen(open: boolean) {
+    if (!panel || !btn) return;
+    panel.style.display = open ? 'block' : 'none';
+    btn.setAttribute('aria-expanded', String(open));
+  }
+
+  if (panel && btn && dec && inc) {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      setPanelOpen(panel.style.display !== 'block');
+    });
+
+    dec.addEventListener('click', () => {
+      current = Math.max(0, current - 1);
+      applySize();
+    });
+
+    inc.addEventListener('click', () => {
+      current = Math.min(sizes.length - 1, current + 1);
+      applySize();
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!panel.contains(e.target as Node) && e.target !== btn) {
+        setPanelOpen(false);
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && panel.style.display === 'block') {
+        setPanelOpen(false);
+        btn.focus();
+      }
+    });
+  }
 </script>
 
 <BaseLayout>
