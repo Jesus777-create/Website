@@ -68,6 +68,9 @@
   --w:     rgba(255, 255, 255, 1);
   --w60:   rgba(255, 255, 255, 0.6);
   --w40:   rgba(255, 255, 255, 0.4);
+  /* Muted text token that meets WCAG AA 4.5:1 on --navy (~6:1 at 0.6).
+     Use this for any text; --w40 (~3.8:1) is decorative / non-text only. */
+  --w-muted: rgba(255, 255, 255, 0.6);
   --w20:   rgba(255, 255, 255, 0.2);
   --w10:   rgba(255, 255, 255, 0.1);
   --w06:   rgba(255, 255, 255, 0.06);
@@ -117,9 +120,13 @@ nav {
 .nav-links a {
   text-decoration: none;
   font-size: 13px;
-  color: var(--w40);
+  color: var(--w-muted);
   letter-spacing: 0.04em;
   transition: color 0.2s;
+  /* >=24px hit target for pointer accessibility (2.5.8). */
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
 }
 
 .nav-links a:hover {
@@ -223,7 +230,8 @@ nav {
 .btn-s {
   background: transparent;
   color: var(--w60);
-  border: 0.5px solid var(--w20);
+  /* >=3:1 against --navy for non-text/UI contrast (1.4.11). */
+  border: 1px solid var(--w40);
   padding: 14px 28px;
   border-radius: 999px;
   font-family: 'DM Sans', sans-serif;
@@ -256,7 +264,7 @@ nav {
 
 .stat-l {
   font-size: 12px;
-  color: var(--w40);
+  color: var(--w-muted);
   margin-top: 4px;
 }
 
@@ -330,7 +338,7 @@ section {
 
 .q-attr {
   font-size: 12px;
-  color: var(--w40);
+  color: var(--w-muted);
   margin-top: 8px;
   letter-spacing: 0.04em;
 }
@@ -377,7 +385,7 @@ section {
 .why-card p {
   font-size: 14px;
   font-weight: 300;
-  color: var(--w40);
+  color: var(--w-muted);
   line-height: 1.7;
 }
 
@@ -461,7 +469,7 @@ section {
   margin-bottom: 10px;
 }
 
-.uc h4 {
+.uc h3 {
   font-size: 13px;
   font-weight: 500;
   color: var(--w);
@@ -470,7 +478,7 @@ section {
 
 .uc p {
   font-size: 12px;
-  color: var(--w40);
+  color: var(--w-muted);
   line-height: 1.55;
 }
 
@@ -540,7 +548,7 @@ section {
 
 .tc-role {
   font-size: 11px;
-  color: var(--w40);
+  color: var(--w-muted);
   line-height: 1.4;
 }
 
@@ -593,16 +601,24 @@ section {
   min-width: 200px;
   padding: 12px 18px;
   background: var(--w06);
-  border: 0.5px solid var(--w20);
+  /* >=3:1 against --navy for form-field boundary (1.4.11). */
+  border: 1px solid var(--w40);
   border-radius: 999px;
   color: var(--w);
   font-family: 'DM Sans', sans-serif;
   font-size: 14px;
-  outline: none;
 }
 
-.wl-input:focus {
+/* Placeholder is supplementary to the sr-only label; keep it readable (1.4.3). */
+.wl-input::placeholder {
+  color: var(--w-muted);
+  opacity: 1;
+}
+
+.wl-input:focus-visible {
   border-color: var(--teal);
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
 }
 
 #wl-ok {
@@ -630,7 +646,7 @@ footer img {
 
 footer p {
   font-size: 12px;
-  color: var(--w40);
+  color: var(--w-muted);
 }
 
 /* ===== DIVIDER ===== */
@@ -651,7 +667,8 @@ footer p {
   height: 40px;
   padding: 8px;
   background: transparent;
-  border: 0.5px solid var(--w20);
+  /* >=3:1 against --navy for the control boundary (1.4.11). */
+  border: 1px solid var(--w40);
   border-radius: 8px;
   cursor: pointer;
 }

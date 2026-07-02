@@ -34,6 +34,19 @@ The waitlist posts to [Formspree](https://formspree.io) (works on any host).
 Until set, the form shows the confirmation message but doesn't deliver email (a warning
 is logged to the console).
 
+## Accessibility
+
+Targets **WCAG 2.2 AA**. Implemented: skip link, visible `:focus-visible` rings,
+labeled form field with status association, semantic landmarks, `prefers-reduced-motion`
+handling, AA-contrast text/UI tokens (`--w-muted` for text, `--w40` borders), and a
+clean heading outline (h1 → h2 → h3).
+
+**Known limitation — 2.2.2 (Pause/Stop/Hide):** the background sound-wave canvases
+auto-animate. We honor the OS `prefers-reduced-motion` setting (animation halts to a
+static frame) but provide no visible pause control, so the animation continues for users
+who haven't set that preference. Add a pause toggle if strict 2.2.2 conformance is
+required.
+
 ## TODO
 
 - Real Formspree form ID (`PUBLIC_FORMSPREE_ID`).
