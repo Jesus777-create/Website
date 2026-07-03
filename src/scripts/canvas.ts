@@ -1,31 +1,20 @@
-// Flowing "sound wave" animations for the hero and origin canvases.
-// The founder's mockup shipped no animation code, so this is an interpretive,
-// brand-appropriate motion: stacked sine waves drifting in the teal palette.
-//
-// Respects `prefers-reduced-motion`: renders a single static frame and stops.
-
 interface WaveConfig {
   color: string;
-  amplitude: number; // peak height as a fraction of canvas height
-  wavelength: number; // px per cycle
-  speed: number; // horizontal drift (px/frame at 60fps)
-  yOffset: number; // vertical center as a fraction of canvas height
+  amplitude: number;
+  wavelength: number;
+  yOffset: number;
   lineWidth: number;
 }
 
 const TEAL_WAVES: WaveConfig[] = [
-  { color: 'rgba(94, 200, 180, 0.45)', amplitude: 0.10, wavelength: 320, speed: 0.6, yOffset: 0.5, lineWidth: 1.5 },
-  { color: 'rgba(29, 158, 117, 0.35)', amplitude: 0.16, wavelength: 460, speed: 0.4, yOffset: 0.55, lineWidth: 1.25 },
-  { color: 'rgba(15, 110, 86, 0.30)', amplitude: 0.22, wavelength: 620, speed: 0.25, yOffset: 0.6, lineWidth: 1 },
+  { color: 'rgba(94, 200, 180, 0.45)', amplitude: 0.10, wavelength: 320, yOffset: 0.5, lineWidth: 1.5 },
+  { color: 'rgba(29, 158, 117, 0.35)', amplitude: 0.16, wavelength: 460, yOffset: 0.55, lineWidth: 1.25 },
+  { color: 'rgba(15, 110, 86, 0.30)', amplitude: 0.22, wavelength: 620, yOffset: 0.6, lineWidth: 1 },
 ];
 
 function setupCanvas(canvas: HTMLCanvasElement) {
   const ctx = canvas.getContext('2d');
-  if (!ctx) return null;
-
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let raf = 0;
-  let phase = 0;
+  if (!ctx) return;
 
   const resize = () => {
     const dpr = window.devicePixelRatio || 1;
@@ -50,7 +39,7 @@ function setupCanvas(canvas: HTMLCanvasElement) {
       const amp = wave.amplitude * h;
       const baseY = wave.yOffset * h;
       for (let x = 0; x <= w; x += 4) {
-        const y = baseY + Math.sin((x / wave.wavelength) * Math.PI * 2 + phase * wave.speed) * amp;
+        const y = baseY + Math.sin((x / wave.wavelength) * Math.PI * 2) * amp;
         if (x === 0) ctx.moveTo(x, y);
         else ctx.lineTo(x, y);
       }
@@ -58,25 +47,9 @@ function setupCanvas(canvas: HTMLCanvasElement) {
     }
   };
 
-  const tick = () => {
-    phase += 0.03;
-    draw();
-    raf = requestAnimationFrame(tick);
-  };
-
   resize();
-  window.addEventListener('resize', () => {
-    resize();
-    if (reduceMotion) draw();
-  });
-
-  if (reduceMotion) {
-    draw(); // single static frame
-  } else {
-    tick();
-  }
-
-  return () => cancelAnimationFrame(raf);
+  window.addEventListener('resize', () => { resize(); draw(); });
+  draw();
 }
 
 function init() {
