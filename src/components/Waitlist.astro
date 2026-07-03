@@ -1,8 +1,4 @@
 ---
-// Formspree form ID. Set PUBLIC_FORMSPREE_ID in `.env` (see .env.example).
-// Until it's set, the form falls back gracefully and logs a clear warning.
-const formId = import.meta.env.PUBLIC_FORMSPREE_ID ?? '';
-const action = formId ? `https://formspree.io/f/${formId}` : '';
 ---
 
 <div class="footer-cta" id="waitlist">
@@ -12,7 +8,7 @@ const action = formId ? `https://formspree.io/f/${formId}` : '';
     members first. Join the waitlist.
   </p>
 
-  <form class="wl-form" id="wl-form" action={action} method="POST" data-has-action={String(!!action)}>
+  <form class="wl-form" id="wl-form">
     <label class="sr-only" for="wl-email">Email address</label>
     <input
       class="wl-input"
@@ -37,46 +33,36 @@ const action = formId ? `https://formspree.io/f/${formId}` : '';
 </div>
 
 <script>
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyVUdGMlMVQRJMz0Nr6RTAFTe3qfw823ABHBLqIRpzkKZIYghxadxT0xoKHRrUSiXUJGg/exec';
+
   const form = document.getElementById('wl-form') as HTMLFormElement | null;
   const ok = document.getElementById('wl-ok');
 
   if (form && ok) {
-    const hasAction = form.dataset.hasAction === 'true';
-
     form.addEventListener('submit', async (e) => {
-      // No backend configured yet: confirm visually but warn the developer.
-      if (!hasAction) {
-        e.preventDefault();
-        console.warn(
-          '[AccessWave] Waitlist not yet connected. Set PUBLIC_FORMSPREE_ID in .env to receive signups.'
-        );
-        ok.style.display = 'block';
-        form.reset();
-        return;
-      }
-
-      // Progressive enhancement: submit via fetch so the user stays on the page.
-      // If JS is disabled, the native POST to Formspree still works.
       e.preventDefault();
-      const button = form.querySelector('button');
-      const data = new FormData(form);
+      const button = form.querySelector('button') as HTMLButtonElement | null;
+      const email = (document.getElementById('wl-email') as HTMLInputElement).value;
 
       try {
         if (button) button.disabled = true;
-        const res = await fetch(form.action, {
+
+        const res = await fetch(SCRIPT_URL, {
           method: 'POST',
-          body: data,
-          headers: { Accept: 'application/json' },
+          body: new URLSearchParams({ email }),
         });
 
-        if (res.ok) {
-          ok.textContent = "You're on the list. We'll be in touch.";
-          ok.style.display = 'block';
-          form.reset();
+        const text = await res.text();
+
+        if (text === 'Already registered') {
+          ok.textContent = "You're already on the list!";
         } else {
-          ok.textContent = 'Something went wrong — please try again or email us.';
-          ok.style.display = 'block';
+          ok.textContent = "You're on the list. We'll be in touch.";
         }
+
+        ok.style.display = 'block';
+        form.reset();
+
       } catch {
         ok.textContent = 'Network error — please try again or email us.';
         ok.style.display = 'block';
