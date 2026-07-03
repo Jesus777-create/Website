@@ -1,0 +1,55 @@
+---
+const commitments = [
+  {
+    title: 'Compatible with assistive tech.',
+    body: 'Our website and products are built to work smoothly with screen readers and other assistive tools people rely on every day.',
+  },
+  {
+    title: 'Image descriptions.',
+    body: 'Every image includes a detailed, accurate description, not just a quick label, so nothing important gets left out.',
+  },
+  {
+    title: 'Adjustable font size.',
+    body: 'Text can be resized to fit what\u2019s comfortable for you.',
+  },
+  {
+    title: 'Ongoing testing with real users.',
+    body: 'We don\u2019t just guess at what works. We test with people from the communities we\u2019re building for.',
+  },
+];
+---
+
+<section id="accessibility" style="padding-top:80px;padding-bottom:80px;">
+  <div class="s-eye">Our commitment</div>
+  <h2 class="s-h">Accessibility Statement</h2>
+  <p class="s-p">
+    At AccessWave Technologies, accessibility isn&rsquo;t an afterthought. It&rsquo;s the reason we
+    exist. We work closely with the blind, low-vision, deaf, hard of hearing, and deafblind
+    communities to build products that work <em>with</em> the assistive technology people already
+    use, not around it.
+  </p>
+  <p class="s-p" style="margin-top:16px;">
+    We don&rsquo;t just plan to meet WCAG standards. We plan to exceed them. Here&rsquo;s what that
+    looks like in practice:
+  </p>
+
+  <div class="why-grid" style="margin-top:40px;">
+    {
+      commitments.map((c) => (
+        <div class="why-card">
+          <h3>{c.title}</h3>
+          <p>{c.body}</p>
+        </div>
+      ))
+    }
+  </div>
+
+  <p class="s-p" style="margin-top:32px;">
+    We&rsquo;re aiming for our website to be fully accessible, and we know that&rsquo;s an ongoing
+    process, not a one-time fix. If something doesn&rsquo;t work the way it should, or you&rsquo;ve
+    got feedback on how we can do better, we want to hear it.
+  </p>
+  <p class="s-p" style="margin-top:12px;">
+    Contact us: <a href="mailto:team@accesswavetech.com" style="color:var(--teal);">team@accesswavetech.com</a>
+  </p>
+</section>
