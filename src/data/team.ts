@@ -74,14 +74,14 @@ export const team: TeamMember[] = [
       'Ian Flores, Founding Engineer, outdoors with short dark brown hair, smiling broadly with his teeth showing. He is wearing dark sunglasses, a white collared dress shirt, a black necktie, and a black suit jacket, standing facing the camera with one arm relaxed at his side. Behind him is a tan brick building and a green leafy tree branch extending across the upper right portion of the image.',
   },
   {
-    initials: 'OL',
-    name: 'Olyvia',
+    initials: 'OW',
+    name: 'Olyvia Witham',
     role: 'Hardware Engineer',
     bg: '#72243E',
     fg: '#F4C0D1',
     photo: '/team/Olyvia.jpeg',
     photoAlt:
-      'Headshot of Olyvia, Founding Engineer, smiling warmly with her teeth showing. She has shoulder-length, dark brown loc\u2019d (dreadlocked) hair parted to frame her face, dark brown eyes, a small nose ring on her left nostril, and small stud earrings. She is wearing a solid black button-up collared shirt with a thin silver chain necklace. The background is a plain, mottled gray studio backdrop.',
+      'Headshot of Olyvia Witham, Founding Engineer, smiling warmly with her teeth showing. She has shoulder-length, dark brown loc\u2019d (dreadlocked) hair parted to frame her face, dark brown eyes, a small nose ring on her left nostril, and small stud earrings. She is wearing a solid black button-up collared shirt with a thin silver chain necklace. The background is a plain, mottled gray studio backdrop.',
   },
   {
     initials: 'JC',
