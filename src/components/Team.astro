@@ -14,9 +14,13 @@ import { team } from '../data/team';
     {
       team.map((m) => (
         <div class="tc">
-          <div class="av" style={`background:${m.bg};color:${m.fg};`} aria-hidden="true">
-            {m.initials}
-          </div>
+          {m.photo ? (
+            <img class="av av-photo" src={m.photo} alt={m.photoAlt ?? `${m.name}, ${m.role}`} loading="lazy" width="48" height="48" />
+          ) : (
+            <div class="av" style={`background:${m.bg};color:${m.fg};`} aria-hidden="true">
+              {m.initials}
+            </div>
+          )}
           <div class="tc-name">{m.name}</div>
           <div class="tc-role">{m.role}</div>
           {m.badge && (

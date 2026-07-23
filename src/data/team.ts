@@ -42,7 +42,16 @@ export const team: TeamMember[] = [
       'Jesus Cervantes, CTO and co-founder, standing outdoors and facing the camera with a neutral expression. He has short dark brown hair, dark brown eyes, and wears rectangular black glasses. He is dressed in a black suit jacket over a dark navy button-down shirt with a black tie. Behind him is a light stone wall covered with green climbing vines and bright orange trumpet-shaped flowers, with a tall cactus to the left and a large green succulent plant to the right.',
   },
   // Corrected spelling: founder's HTML read "Andy Corrals".
-  { initials: 'AC', name: 'Andy Corrales', role: 'Senior Engineer', bg: '#0C447C', fg: '#B5D4F4' },
+  {
+    initials: 'AC',
+    name: 'Andres Corrales',
+    role: 'Senior Engineer',
+    bg: '#0C447C',
+    fg: '#B5D4F4',
+    photo: '/team/Andres_Corrales.jpeg',
+    photoAlt:
+      'Professional headshot of Andres Corrales, Senior Engineer. He has medium-length black hair styled in a middle part, a black mustache, and wears clear-framed glasses, looking directly at the camera. He is dressed in a gray suit jacket over a white collared shirt with a navy tie. The background is a plain studio backdrop.',
+  },
   { initials: 'MM', name: 'Manuel Molina', role: 'Business Partner', bg: '#633806', fg: '#FAC775' },
   {
     initials: 'AG',

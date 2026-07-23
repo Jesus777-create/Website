@@ -593,6 +593,11 @@ section {
   margin: 0 auto 14px;
 }
 
+.av-photo {
+  object-fit: cover;
+  object-position: center;
+}
+
 .tc-name {
   font-size: 0.81rem;
   font-weight: 500;
